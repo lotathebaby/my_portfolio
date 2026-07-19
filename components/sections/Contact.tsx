@@ -32,7 +32,7 @@ export function Contact() {
             Open to new roles and collaborations.
           </h2>
           <p className="mt-4 max-w-md text-sm leading-relaxed text-muted">
-            The fastest way to reach me is email. I'm happy to talk through a
+            The fastest way to reach me is email. I am happy to talk through a
             role, a dataset, or a project idea.
           </p>
 
@@ -95,7 +95,7 @@ export function Contact() {
 
           {status === "sent" && (
             <p className="mt-3 text-xs text-muted" role="status">
-              Thanks — I'll get back to you soon.
+              Thanks — I will get back to you soon.
             </p>
           )}
         </form>

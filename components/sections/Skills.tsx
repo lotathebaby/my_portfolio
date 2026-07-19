@@ -10,7 +10,7 @@ export function Skills() {
     <Section id="skills" className="border-t border-border">
       <Eyebrow>Skills</Eyebrow>
       <h2 className="max-w-xl text-2xl font-semibold tracking-tight text-ink">
-        Capabilities, organized by what they're for.
+        Capabilities, organized by what they are for.
       </h2>
 
       <div className="mt-12 grid gap-5 sm:grid-cols-2">
