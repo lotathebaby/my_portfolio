@@ -63,10 +63,13 @@ export function Hero() {
             View Projects
             <ArrowRight className="h-4 w-4" />
           </LinkButton>
-          <LinkButton href={siteConfig.resumeFile} variant="secondary">
-            Download Resume
-            <Download className="h-4 w-4" />
-          </LinkButton>
+        <a href={siteConfig.resumeFile}
+  download
+  className="inline-flex items-center justify-center gap-2 rounded-lg border border-border bg-transparent px-5 py-2.5 text-sm font-medium text-ink transition-colors duration-150 hover:bg-surface-hover focus-visible:outline-2 focus-visible:outline-accent"
+>
+  Download Resume
+  <Download className="h-4 w-4" />
+</a>
         </motion.div>
       </Container>
     </div>

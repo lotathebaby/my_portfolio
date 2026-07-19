@@ -10,6 +10,7 @@
   --ink: #16181d;
   --muted: #5b6270;
   --accent-soft: #eaf1ff;
+  --grid-dot: #c7ccd6; /* NEW — more visible than --border, used only for the hero grid */
 }
 
 .dark {
@@ -20,6 +21,7 @@
   --ink: #f2f3f5;
   --muted: #9096a2;
   --accent-soft: #10192c;
+  --grid-dot: #34363d;
 }
 
 * {
@@ -32,6 +34,11 @@ html {
 
 body {
   background-color: var(--canvas);
+  background-image:
+    radial-gradient(ellipse 60% 40% at 20% 0%, var(--accent-soft) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 35% at 100% 15%, var(--accent-soft) 0%, transparent 60%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   color: var(--ink);
   font-feature-settings: "cv02", "cv03", "cv04", "cv11";
 }
@@ -49,11 +56,11 @@ body {
 
 /* Signature hero motif: a faint schematic of nodes + connecting lines,
    evoking a data pipeline / lineage graph. Pure CSS, no imagery. */
-.pipeline-field {
-  background-image: radial-gradient(var(--border) 1px, transparent 1px);
-  background-size: 28px 28px;
-  mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, black 40%, transparent 100%);
-}
+   .pipeline-field {
+    background-image: radial-gradient(var(--grid-dot) 1px, transparent 1px);
+    background-size: 28px 28px;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, black 40%, transparent 100%);
+  }
 
 .text-balance {
   text-wrap: balance;

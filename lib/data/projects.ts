@@ -128,6 +128,7 @@ export const projects: Project[] = [
     title: "Telecom Call Center Performance & Churn Analysis",
     industry: "Telecommunications",
     type: "Analytics",
+    featured: true,
     description:
       "An analysis of 5,000 call center interactions revealing how wait times and unresolved issues drive customer churn.",
     businessProblem:
@@ -187,6 +188,7 @@ export const projects: Project[] = [
     skills: ["Data Cleaning", "Statistical Analysis", "Exploratory Data Analysis"],
     github: "https://github.com/lotathebaby/hospital-patient-flow-analysis",
     demo: "",
+    featured: true, 
     caseStudy: {
       overview:
         "An admissions dataset of ~9,199 patient visits, cleaned and analyzed entirely in SQL — including window functions for ranking — to trace how department workload and wait times shape patient satisfaction and to identify peak-demand periods.",
@@ -555,5 +557,5 @@ export function getProjectsByIndustry(industry: Industry): Project[] {
 }
 
 export function getFeaturedProjects(): Project[] {
-  return projects.filter((p) => p.featured);
+  return projects.filter((p) => p.featured && isPublished(p));
 }

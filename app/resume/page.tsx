@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Download } from "lucide-react";
 import { Eyebrow, Section } from "@/components/ui/Section";
-import { LinkButton } from "@/components/ui/Button";
 import { siteConfig } from "@/lib/data/config";
 
 export const metadata: Metadata = {
@@ -22,10 +21,14 @@ export default function ResumePage() {
             {siteConfig.summary}
           </p>
         </div>
-        <LinkButton href={siteConfig.resumeFile} variant="primary">
+        
+          <a href={siteConfig.resumeFile}
+          download
+          className="inline-flex items-center justify-center gap-2 rounded-lg border border-accent bg-accent px-5 py-2.5 text-sm font-medium text-white transition-colors duration-150 hover:bg-blue-600 focus-visible:outline-2 focus-visible:outline-accent"
+        >
           <Download className="h-4 w-4" />
           Download PDF
-        </LinkButton>
+        </a>
       </div>
 
       <div className="mt-10 overflow-hidden rounded-xl border border-border">
