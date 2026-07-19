@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --canvas: #ffffff;
+  --surface: #f8f9fb;
+  --surface-hover: #f1f3f6;
+  --border: #e4e7ec;
+  --ink: #16181d;
+  --muted: #5b6270;
+  --accent-soft: #eaf1ff;
+}
+
+.dark {
+  --canvas: #0a0b0d;
+  --surface: #141519;
+  --surface-hover: #1b1d22;
+  --border: #26282e;
+  --ink: #f2f3f5;
+  --muted: #9096a2;
+  --accent-soft: #10192c;
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--canvas);
+  color: var(--ink);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Signature hero motif: a faint schematic of nodes + connecting lines,
+   evoking a data pipeline / lineage graph. Pure CSS, no imagery. */
+.pipeline-field {
+  background-image: radial-gradient(var(--border) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, black 40%, transparent 100%);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+/* Focus visibility for accessibility */
+:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+::selection {
+  background: #3b82f6;
+  color: white;
+}
