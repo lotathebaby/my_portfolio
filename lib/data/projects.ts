@@ -31,6 +31,12 @@ export interface CaseStudySection {
   body: string[]; // one paragraph per array entry
 }
 
+export interface ProjectImage {
+  src: string;
+  alt: string;
+  caption?: string;
+}
+
 export interface Project {
   slug: string;
   title: string;
@@ -44,6 +50,7 @@ export interface Project {
   demo?: string;
   featured?: boolean;
   status?: "published" | "planned";
+  images?: ProjectImage[]; 
   caseStudy: {
     overview: string;
     objectives: string[];
@@ -75,15 +82,22 @@ export const projects: Project[] = [
     description:
       "An analysis of 12,000 hospital records across multiple facilities, tracing how staffing pressure and ER crowding drive wait times, patient satisfaction, and readmissions.",
     businessProblem:
-      "Hospital operational data was scattered across incompatible systems and full of inconsistencies including mismatched department names, invalid ages, and broken date logic — making it impossible to see patient flow, staffing pressure, or financial performance clearly without a full cleanup first.",
+      "Hospital operational data was scattered across incompatible systems and full of inconsistencies including mismatched department names, invalid ages, and broken date logic: making it impossible to see patient flow, staffing pressure, or financial performance clearly without a full cleanup first.",
     technologies: ["Excel", "SQL", "MySQL", "Tableau"],
     skills: ["Data Cleaning", "Exploratory Data Analysis", "Dashboard Development", "Statistical Analysis"],
     github: "https://github.com/lotathebaby/healthcare-operations-patient-flow",
     demo: "https://public.tableau.com/views/HealthcareOperationsAnalyticsDashboard_17788386504530/Dashboard2",
     featured: true,
+    images: [
+      {
+        src: "/projects/healthcare-operations-patient-flow/dashboard-executive.png",
+        alt: "Executive overview dashboard showing hospital admissions and volume KPIs",
+        caption: "Executive overview — volume, admissions, seasonality.",
+      },
+    ],
     caseStudy: {
       overview:
-        "A multi-facility hospital operations dataset — admissions, staffing, wait times, satisfaction scores, and financials, cleaned and modeled to surface the operational drivers behind patient wait times and readmissions, then delivered as a three-part Tableau dashboard suite.",
+        "A multi-facility hospital operations dataset including admissions, staffing, wait times, satisfaction scores, and financials, cleaned and modeled to surface the operational drivers behind patient wait times and readmissions, then delivered as a three-part Tableau dashboard suite.",
       objectives: [
         "Standardize a messy, multi-source dataset (56 fields, 12,000 records) into something analysis-ready",
         "Identify which departments and facilities carry the heaviest patient volume and wait-time burden",
@@ -137,6 +151,13 @@ export const projects: Project[] = [
     skills: ["Exploratory Data Analysis", "Business Intelligence", "Dashboard Development", "Statistical Analysis"],
     github: "",
     demo: "https://public.tableau.com/shared/MXCXSKQ7J",
+    images: [
+      {
+        src: "/projects/telecom-call-center-performance/dashboard-overview.png",
+        alt: "Tableau dashboard showing call center volume, wait time, resolution rate, and churn KPIs",
+        caption: "Call center KPI dashboard — volume, wait time, resolution rate, churn.",
+      },
+    ],
     caseStudy: {
       overview:
         "A call-center operations dataset covering ~2,000 customers and 80 agents was analyzed to connect wait times and resolution outcomes to churn, then delivered as a Tableau dashboard with clear operational recommendations.",
@@ -153,20 +174,20 @@ export const projects: Project[] = [
         "Ran validation checks for missing values, duplicates, and inconsistent category labels before analysis, confirming the dataset was largely clean going in.",
         "Grouped raw wait times into operational bins (0–10, 11–30 … 241–500 minutes) to make patterns easier to read in the dashboard.",
         "Built pivot tables in Excel to pre-aggregate key metrics before importing into Tableau, keeping the dashboard responsive.",
-        "Designed the dashboard around four KPIs — total calls, average wait time, resolution rate, churn rate — as the entry point into deeper department-level views.",
+        "Designed the dashboard around four KPIs — total calls, average wait time, resolution rate, churn rate, as the entry point into deeper department-level views.",
       ],
       analysis: [
-        "Technical Support carried the highest call volume and the highest number of unresolved cases, with 606 customers alone waiting 1–2 hours for that department — the clearest single bottleneck in the system.",
+        "Technical Support carried the highest call volume and the highest number of unresolved cases, with 606 customers alone waiting 1–2 hours for that department, the clearest single bottleneck in the system.",
         "Average wait time across all calls was about 79 minutes, and resolution rate sat at roughly 64%, indicating the queue and troubleshooting process were both under strain.",
         "Churn ran highest among month-to-month customers and lowest among 2-year contract holders, suggesting monthly plans function as low-commitment trials rather than a stable base.",
         "Residential customers drove the bulk of call volume and experienced longer waits than business customers, pointing to a resourcing mismatch relative to demand.",
       ],
       challenges: [
-        "Because the dataset was synthetic but designed to mirror real messiness, it still required a full validation pass rather than assuming clean data — checking category consistency and realistic value ranges before trusting any metric built on top of it.",
+        "Because the dataset was synthetic but designed to mirror real messiness, it still required a full validation pass rather than assuming clean data, checking category consistency and realistic value ranges before trusting any metric built on top of it.",
         "Wait times spanned a very wide range (0–500 minutes), which needed binning before it could be visualized meaningfully rather than as a noisy scatter.",
       ],
       lessonsLearned: [
-        "A small set of KPIs (volume, wait time, resolution, churn) framed the whole analysis better than diving straight into granular charts — leading with them made the department-level findings easier to interpret.",
+        "A small set of KPIs (volume, wait time, resolution, churn) framed the whole analysis better than diving straight into granular charts, leading with them made the department-level findings easier to interpret.",
         "Tying an operational metric (wait time, resolution rate) directly to a business outcome (churn) made the recommendations far more actionable than reporting the metrics in isolation.",
       ],
       futureImprovements: [
@@ -183,15 +204,22 @@ export const projects: Project[] = [
     description:
       "A SQL-only analysis of 9,199 patient admissions examining department workload, wait times, and satisfaction to find operational bottlenecks.",
     businessProblem:
-      "Hospital leadership needed to know which departments were overloaded and how wait times were affecting patient satisfaction, using only the raw admissions data and SQL — no BI tool in the loop.",
+      "Hospital leadership needed to know which departments were overloaded and how wait times were affecting patient satisfaction, using only the raw admissions data and SQL, with no BI tool in the loop.",
     technologies: ["MySQL", "SQL"],
     skills: ["Data Cleaning", "Statistical Analysis", "Exploratory Data Analysis"],
     github: "https://github.com/lotathebaby/hospital-patient-flow-analysis",
     demo: "",
     featured: true, 
+    images: [
+      {
+        src: "/projects/healthcare-cost-length-of-stay/dashboard-overview.png",
+        alt: "Dashboard showing hospital cost and length of stay by condition and age group",
+        caption: "Cost and length-of-stay breakdown by condition.",
+      },
+    ],
     caseStudy: {
       overview:
-        "An admissions dataset of ~9,199 patient visits, cleaned and analyzed entirely in SQL — including window functions for ranking — to trace how department workload and wait times shape patient satisfaction and to identify peak-demand periods.",
+        "An admissions dataset of ~9,199 patient visits, cleaned and analyzed entirely in SQL, including window functions for ranking, to trace how department workload and wait times shape patient satisfaction and to identify peak-demand periods.",
       objectives: [
         "Identify which departments carry the heaviest referral load",
         "Quantify how wait time affects satisfaction scores",
@@ -204,14 +232,14 @@ export const projects: Project[] = [
         "Raw CSV → SQL data cleaning script → staged exploration, demographic, operational, time-based, and patient-experience queries → window-function ranking for final insights.",
       implementation: [
         "Cleaned invalid gender entries and inconsistent date formats, and built a dedicated cleaned-date column rather than overwriting the original for traceability.",
-        "Structured the analysis as six sequential SQL stages — exploration, demographic, operational, time-based, patient-experience, and window-function ranking — each in its own script for readability and reuse.",
+        "Structured the analysis as six sequential SQL stages, exploration, demographic, operational, time-based, patient-experience, and window-function ranking, each in its own script for readability and reuse.",
         "Used window functions to rank departments and admission hours by volume and satisfaction rather than relying on manual sorting.",
       ],
       analysis: [
         "Most visits (2,731) resolved without a specialist referral; among those that needed one, General Practice and Orthopedics took the largest share.",
-        "Satisfaction dropped sharply as wait time increased — average scores fell from about 1.58 at ~10 minutes to 1.28 by ~30 minutes, suggesting even moderate delays matter more than expected.",
-        "Admissions peaked at 23:00, 07:00, and 13:00 — a mix of late-night and early-morning demand that a daytime-only staffing model would miss entirely.",
-        "Renal reported the lowest average satisfaction score (1.22) of any department, with General Practice and Orthopedics also trailing — flagging those as priorities for workflow review.",
+        "Satisfaction dropped sharply as wait time increased, average scores fell from about 1.58 at ~10 minutes to 1.28 by ~30 minutes, suggesting even moderate delays matter more than expected.",
+        "Admissions peaked at 23:00, 07:00, and 13:00, a mix of late-night and early-morning demand that a daytime-only staffing model would miss entirely.",
+        "Renal reported the lowest average satisfaction score (1.22) of any department, with General Practice and Orthopedics also trailing, flagging those as priorities for workflow review.",
       ],
       challenges: [
         "The raw gender field contained corrupted entries (e.g. malformed values from encoding issues) that needed explicit detection and correction rather than a simple standardization pass.",
@@ -411,47 +439,66 @@ export const projects: Project[] = [
     },
   },
   {
-    slug: "inventory-demand-forecasting",
-    title: "Inventory Demand Forecasting",
+    slug: "supply-chain-shipment-performance",
+    title: "Supply Chain Shipment Performance Analysis",
     industry: "Supply Chain",
     type: "Analytics",
     description:
-      "A demand forecasting analysis used to reduce stockouts and excess inventory across a multi-warehouse network.",
+      "An analysis of 10,000 shipment records connecting delivery, cost, inventory, and customer experience data to find where a logistics operation actually loses time and money.",
     businessProblem:
-      "Warehouses were both stocking out of fast-moving SKUs and overstocking slow movers, driven by a flat reorder-point model that ignored seasonality.",
-    technologies: ["Python", "SQL", "Excel"],
-    skills: ["Statistical Analysis", "Exploratory Data Analysis", "Data Visualization"],
-    github: "https://github.com/yourhandle/inventory-demand-forecasting",
-    demo: "",
-    status: "planned",
+      "Leadership needed a single view of shipment performance instead of scattered signals, which carriers, routes, and conditions were really driving late deliveries, and whether the operational levers assumed to matter (staffing, driver experience) actually did.",
+    technologies: ["Excel", "MySQL", "SQL", "Tableau"],
+    skills: ["Data Cleaning", "SQL Querying", "Exploratory Data Analysis", "Business Intelligence", "Dashboard Development"],
+    github: "https://github.com/lotathebaby/supply_chain_analysis",
+    demo: "https://public.tableau.com/views/Supplychainproject_17845630845070/Dashboard1?%3Alanguage=en-GB&publish=yes&%3Asid=&%3Aredirect=auth&%3Adisplay_count=n&%3Aorigin=viz_share_link",
+    featured: true,
+    images: [
+      {
+        src: "/projects/supply-chain-shipment-performance/dashboard-overview.png",
+        alt: "Tableau dashboard showing supply chain delivery, profitability, inventory, and customer experience KPIs",
+        caption: "Dashboard overview, delivery, profitability, inventory, and customer experience in one view.",
+      },
+    ],
     caseStudy: {
       overview:
-        "A SKU-level demand forecasting analysis that replaced a flat reorder-point rule with seasonally-aware forecasts, reducing both stockouts and excess inventory.",
+        "A dataset of 10,000 simulated shipment records, spanning delivery timelines, carrier and route data, financials, inventory, and customer experience, cleaned in Excel, analyzed across five themes in MySQL, and delivered as a four-quadrant Tableau dashboard (Delivery, Profitability, Inventory, Customer Experience).",
       objectives: [
-        "Model demand seasonality at the SKU/warehouse level",
-        "Quantify the cost trade-off between stockouts and overstock under different reorder policies",
+        "Evaluate delivery performance across carriers, shipping modes, weather, and traffic conditions",
+        "Analyze return and damage patterns by product category and carrier",
+        "Compare profitability across shipping modes, carriers, routes, and product categories",
+        "Investigate whether warehouse staffing and inventory levels actually predict operational problems",
+        "Determine what drives customer satisfaction and complaints",
       ],
       dataset:
-        "Three years of daily sales and inventory-level data across 12 warehouses and roughly 2,000 SKUs.",
+        "10,000 shipment records covering order/delivery timelines, carrier and shipping details, origin/destination and distance, product and pricing data, financials (shipping cost, fuel surcharge, profit margin), warehouse/inventory metrics, and customer experience data (satisfaction, complaints, returns).",
       architectureNote:
-        "Sales and inventory extracts loaded into PostgreSQL, forecasting done in Python, results delivered as an Excel-based reorder tool for warehouse planners.",
+        "Raw shipment export → Excel cleaning (duplicate columns, blanks, date formats, whitespace, encoding) → MySQL, structured into five analysis themes → Tableau dashboard.",
       implementation: [
-        "Built SKU-level time series decomposition to separate trend, seasonality, and noise before forecasting.",
-        "Compared a seasonal naive baseline against exponential smoothing, selecting per-SKU based on backtested error.",
-        "Delivered results as an Excel reorder-point tool rather than a dashboard, matching how warehouse planners actually worked day to day.",
+        "Removed a duplicate Product_Category column (one had a trailing space in its header) left over from earlier data handling, to avoid conflicting column names downstream.",
+        "Checked blank/null values against expectation, e.g. confirming Return_Reason was correctly blank only for non-returned orders, rather than treating all nulls as errors.",
+        "Standardized Order_Date, Shipment_Date, and Delivery_Date formats and re-saved the file in UTF-8 before import, after hitting character-encoding errors on the first MySQL load.",
+        "Structured the SQL analysis into five themes including Delivery Performance, Returns & Quality, Financial Performance, Warehouse & Inventory, Customer Experience, so each could be investigated as its own focused set of queries rather than one long unfocused script.",
+        "Built the Tableau dashboard around the same four themes as the SQL analysis (Delivery, Profitability, Inventory, Customer Experience), with filters for carrier, shipping mode, product category, and supplier alongside always-visible top-line KPIs.",
+        "Deliberately excluded analyses that didn't hold up, like certain route-level and monthly-trend views, from the final dashboard rather than including them for the sake of completeness.",
       ],
       analysis: [
-        "A subset of high-volume SKUs accounted for a disproportionate share of stockout incidents, and those SKUs specifically showed strong weekly seasonality that the flat reorder rule ignored entirely.",
+        "91.15% of all deliveries were late, but the rate barely varied by carrier or shipping mode (Purolator 91.93%, UPS 90.26%), the real driver was weather and traffic, with heavy traffic and snow/blizzard conditions producing the most late deliveries.",
+        "Furniture stood out as a clear outlier for both return rate and damage rate compared to every other product category, while Canada Post carried the highest damaged/lost shipment rate among carriers.",
+        "Economy shipping had both the lowest average cost and the highest profit margin, while Same-Day shipping was the most expensive and least profitable; one specific route (New York to Vancouver) ran a negative average profit margin.",
+        "Warehouse staffing level and capacity utilization showed no meaningful relationship with processing time or delays, but low inventory stock level was a strong, consistent predictor, nearly every backorder occurred while stock was flagged low.",
+        "Late delivery and delivery-attempt count showed no meaningful correlation with customer satisfaction, B2B customers reported the highest satisfaction and Government customers the lowest, independent of delay rates.",
       ],
       challenges: [
-        "Sales data included promotional spikes that, left untreated, would have been misread by the model as normal seasonality.",
+        "Character encoding issues surfaced during the MySQL import and had to be resolved by re-saving the source file in UTF-8 before it would load cleanly.",
+        "Several operational factors that looked interesting at a glance (driver experience, staffing level, capacity utilization) had to be explicitly tested and ruled out rather than assumed to matter, which shaped which findings made it into the final dashboard.",
       ],
       lessonsLearned: [
-        "Meeting the planners' existing Excel-based workflow got the tool adopted far faster than a new dashboard would have.",
+        "The most valuable part of the analysis was distinguishing real signals (weather/traffic, furniture returns, low-stock-to-backorder) from plausible-looking factors that didn't actually hold up under scrutiny (staffing, driver experience, delivery attempts vs. satisfaction).",
+        "Structuring both the SQL analysis and the dashboard around the same set of themes kept the story consistent from query to visual, instead of the dashboard drifting from what the analysis actually found.",
       ],
       futureImprovements: [
-        "Automate the forecast refresh on a weekly schedule instead of a manual monthly run.",
-        "Extend the model to recommend safety stock levels, not just reorder points.",
+        "Build a monitoring view around the low-stock-to-backorder relationship specifically, since it was the clearest cause-and-effect signal in the dataset.",
+        "Investigate the New York–Vancouver route and ProSource Industries supplier relationship in more depth, since both were flagged as cost/performance outliers.",
       ],
     },
   },

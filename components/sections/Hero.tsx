@@ -23,7 +23,7 @@ export function Hero() {
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
           className="font-mono text-xs uppercase tracking-[0.18em] text-muted"
         >
-          {siteConfig.role}
+          {siteConfig.name} . {siteConfig.role}
         </motion.p>
 
         <motion.h1
@@ -32,17 +32,8 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
           className="mt-5 max-w-3xl text-balance text-4xl font-semibold tracking-tight text-ink sm:text-6xl"
         >
-          {siteConfig.name}
-        </motion.h1>
-
-        <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-4 max-w-2xl text-balance text-xl text-ink/90 sm:text-2xl"
-        >
           {siteConfig.headline}
-        </motion.p>
+        </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 16 }}
